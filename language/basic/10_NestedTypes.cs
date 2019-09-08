@@ -14,7 +14,7 @@ namespace basic
             string fullName = typeOfNestedType.FullName;
 
             // correct the value of expectedFullName to fix the test.
-            const string expectedFullName = "BanKai.Basic.Common.NestedTypeDemoClass.NestedType";
+            const string expectedFullName = "basic.Common.NestedTypeDemoClass+NestedType";
 
             Assert.Equal(expectedFullName, fullName);
         }
