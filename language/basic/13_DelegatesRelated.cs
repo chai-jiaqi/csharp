@@ -29,7 +29,7 @@ namespace basic
             TransformerDelegateDemo transformer = EquivalentTransformation;
 
             // change variable value to fix test.
-            const string expectedDelegateType = "";
+            const string expectedDelegateType = "TransformerDelegateDemo";
 
             Assert.Equal(expectedDelegateType, typeof(TransformerDelegateDemo).Name);
             Assert.True(transformer is Delegate);
@@ -43,7 +43,7 @@ namespace basic
             int transformResult = transformer(2);
 
             // change variable value to fix test.
-            const int expectedResult = default(int);
+            const int expectedResult = 2;
 
             Assert.Equal(expectedResult, transformResult);
         }
@@ -56,7 +56,7 @@ namespace basic
             int actualResult = PassingDelegateAsArgument(transformer);
 
             // change variable value to fix test.
-            const int expectedResult = default(int);
+            const int expectedResult = 5;
 
             Assert.Equal(expectedResult, actualResult);
         }
@@ -72,7 +72,9 @@ namespace basic
             theDelegate();
 
             // change variable value to fix test.
-            var expectedTrace = new string[] {};
+            var expectedTrace = new string[] {
+                "MulticastDelegateDemoClass.OneMethod() called", 
+                "MulticastDelegateDemoClass.AnotherMethod() called"};
 
             Assert.Equal(expectedTrace, demoObject.Trace);
         }
@@ -90,13 +92,13 @@ namespace basic
             theDelegate();
 
             // change variable value to fix test.
-            var expectedTrace = new string[] { };
+            var expectedTrace = new string[] {"MulticastDelegateDemoClass.AnotherMethod() called"};
 
             Assert.Equal(expectedTrace, demoObject.Trace);
         }
 
         [Fact]
-        public void should_be_immutable_and_create_new_delegate_on_substraction_change()
+        public void should_be_immutable_and_create_new_delegate_on_subtraction_change()
         {
             var demoObject = new MulticastDelegateDemoClass();
 
@@ -106,14 +108,14 @@ namespace basic
             theDelegate += demoObject.AnotherMethod;
 
             // change variable value to fix test.
-            const bool areReferenceEqual = true;
+            const bool areReferenceEqual = false;
 
             Assert.Equal(areReferenceEqual, ReferenceEquals(theDelegate, copy));
         }
 
         [Fact]
         [SuppressMessage("ReSharper", "DelegateSubtraction")]
-        public void should_be_list_subtraction_rather_than_scalar_substraction()
+        public void should_be_list_subtraction_rather_than_scalar_subtraction()
         {
             var demoObject = new DelegateSubtractionDemoClass();
 
@@ -124,7 +126,7 @@ namespace basic
             ((a + b + c) - (a + c))();
 
             // change variable value to fix test.
-            const string expectedOutput = "B";
+            const string expectedOutput = "A,B,C";
 
             Assert.Equal(expectedOutput, demoObject.ToString());
         }
@@ -141,7 +143,7 @@ namespace basic
             int returnedResult = (returnsOne + returnsThree + returnsTwo)();
 
             // change variable value to fix test.
-            const int expectedResult = 6;
+            const int expectedResult = 2;
 
             Assert.Equal(expectedResult, returnedResult);
         }
@@ -156,7 +158,7 @@ namespace basic
             object returnedValue = delegateReturnsObject();
 
             // change variable value to fix test.
-            object expectedValue = null;
+            object expectedValue = "Hello";
 
             Assert.Equal(expectedValue, returnedValue);
         }
@@ -172,7 +174,7 @@ namespace basic
             string returnedValue = delegateAcceptsString("Good");
 
             // change variable value to fix test.
-            const string expectedValue = "";
+            const string expectedValue = "Good";
 
             Assert.Equal(expectedValue, returnedValue);
         }
