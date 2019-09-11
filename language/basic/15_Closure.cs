@@ -18,7 +18,7 @@ namespace basic
             int returnedValue = methodCapturingVariable();
 
             // change variable value to correct test.
-            const int expectedReturnedValue = default(int);
+            const int expectedReturnedValue = 1;
 
             Assert.Equal(expectedReturnedValue, returnedValue);
         }
@@ -33,7 +33,7 @@ namespace basic
             methodChangeVariableValue();
 
             // change variable value to correct test.
-            const int expectedOuterVariableValue = 1;
+            const int expectedOuterVariableValue = 2;
 
             Assert.Equal(expectedOuterVariableValue, outerVariable); 
         }
@@ -55,7 +55,7 @@ namespace basic
                 sum += func();
             }
 
-            const int expectedSum = 3;
+            const int expectedSum = 9;
 
             Assert.Equal(expectedSum, sum);
         }
