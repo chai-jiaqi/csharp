@@ -12,19 +12,19 @@ namespace basic
             Name name = "Bill Gates";
 
             // please update variable value to fix the test.
-            const string expectedName = "";
+            const string expectedName = "Bill Gates";
 
             Assert.Equal(expectedName, name.ToString());
         }
 
         [Fact]
         [SuppressMessage("ReSharper", "RedundantCast")]
-        public void should_explicity_convert_to_target_type()
+        public void should_explicitly_convert_to_target_type()
         {
             Name name = "Bill Gates";
 
             // please update variable value to fix the test.
-            const string expectedName = "";
+            const string expectedName = "Bill Gates";
 
             Assert.Equal(expectedName, (string)name);            
         }
