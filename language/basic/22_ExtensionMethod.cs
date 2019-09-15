@@ -15,7 +15,7 @@ namespace basic
             string returnValue = message.OhGodItLooksAsIfIWasAMemberOfString();
 
             // please update variable value to fix the test.
-            const string expectedReturnValue = "";
+            const string expectedReturnValue = "Hello!";
 
             Assert.Equal(expectedReturnValue, returnValue);
         }
@@ -29,7 +29,7 @@ namespace basic
                 numberList.MySelect(number => number.ToString(CultureInfo.InvariantCulture));
 
             // please update variable value to fix the test.
-            IEnumerable<string> expectedResult = new[] {"hehe"};
+            IEnumerable<string> expectedResult = new[] {"1", "2", "3"};
 
             Assert.Equal(expectedResult, transformedResult);
         }
