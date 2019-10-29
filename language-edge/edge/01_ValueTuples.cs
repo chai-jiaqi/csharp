@@ -14,7 +14,7 @@ namespace edge
             var student = new Tuple<string, short>("Harry", 1990);
 
             // Please complete the following statement to pass the test.
-            string message = "";
+            string message = $"The student '{student.Item1}' was born on {student.Item2}.";
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
@@ -28,7 +28,7 @@ namespace edge
             
             // Please complete the following statement to pass the test, you should use `student`
             // variable in the following line.
-            string message = "";
+            string message = $"The student '{student.Item1}' was born on {student.Item2}.";
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
@@ -41,7 +41,7 @@ namespace edge
             (string name, int yearOfBirth) = ("Harry", 1990);
             
             // Please complete the following statement to pass the test.
-            string message = "";
+            string message = $"The student '{name}' was born on {yearOfBirth}.";
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
@@ -55,7 +55,7 @@ namespace edge
             
             // Please complete the following statement to pass the test. Note that you must directly
             // specify type using `typeof()` keyword
-            Type expected = null;
+            Type expected = typeof(System.ValueTuple<string, int>);
             
             Assert.Equal(expected, theType);
         }
@@ -70,7 +70,7 @@ namespace edge
             
             // Please complete the following statement to pass the test. You should use `student`
             // anyway in the following statement.
-            string message = "";
+            string message = $"The student '{student.name}' was born on {student.yearOfBirth}.";
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
@@ -96,10 +96,10 @@ namespace edge
 
             // Please complete the following statements to pass the test. Note that you can only
             // write `true` or `false` and you cannot write any calculation expressions.
-            const bool nameFieldExist = true;
-            const bool namePropertyExist = true;
+            const bool nameFieldExist = false;
+            const bool namePropertyExist = false;
             const bool item1FieldExist = true;
-            const bool item1PropertyExist = true;
+            const bool item1PropertyExist = false;
             
             Assert.Equal(nameFieldExist, nameField != null);
             Assert.Equal(namePropertyExist, nameProperty != null);
