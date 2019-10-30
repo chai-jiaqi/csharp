@@ -8,7 +8,7 @@ namespace edge
         public void should_use_default_literal_as_default_of_op()
         {
             // Please correct the following statement to pass the test.
-            const string expectedResult = "";
+            const string expectedResult = "The integerValue is 0 and stringValue is (null)";
             
             Assert.Equal(expectedResult, MethodWithSomeParameter(default, default));
         }
@@ -24,7 +24,7 @@ namespace edge
             }
 
             // Please correct the following statement to pass the test.
-            const int expected = 0;
+            const int expected = 1;
             
             Assert.Equal(expected, integer);
         }
