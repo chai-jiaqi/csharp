@@ -1,9 +1,17 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace edge
 {
     public class RefsFacts
     {
+        /**
+         *  int a = 1;
+         *  ref int ra = ref a;
+         *  int b = ra == a;
+         *  ref int rb = ref ra;
+         *  ra == rb;
+         */
         static ref int GetElementAt(int[] array, int index)
         {
             return ref array[index];
@@ -18,8 +26,8 @@ namespace edge
             thirdElementRef = 100;
 
             // Please correct the following 2 statements to pass the test.
-            const int firstExpectation = default;
-            int[] secondExpectation = { };
+            const int firstExpectation = 100;
+            int[] secondExpectation = {1, 2, 100, 4, 5, 6};
             
             Assert.Equal(firstExpectation, numbers[2]);
             Assert.Equal(secondExpectation, numbers);
@@ -32,7 +40,7 @@ namespace edge
             GetElementAt(numbers, 2) = 100;
             
             // Please correct the following line to pass the test.
-            int[] expect = { };
+            int[] expect = {1, 2, 100, 4, 5, 6};
             
             Assert.Equal(expect, numbers);
         }
@@ -44,8 +52,8 @@ namespace edge
             int value = GetElementAt(numbers, 2);
 
             // Please correct the following 2 lines to pass the test.
-            const int firstExpectation = default;
-            const int secondExpectation = default;
+            const int firstExpectation = 3;
+            const int secondExpectation = 100;
             
             Assert.Equal(firstExpectation, value);
             value = 100;
