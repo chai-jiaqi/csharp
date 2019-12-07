@@ -6,23 +6,36 @@ namespace FeatureToggle.Lib
     {
         public static IFeature Create()
         {
-            #region Please implement the method to pass the test
-            
             /*
              * In this practice, we will evaluate how to provide feature toggling in .NET.
              * Please read the test and complete the code.
              *
              * Difficulty: Super Easy.
              */
-            throw new NotImplementedException();
-            
-            #endregion
+            if (TryCreate<ExperimentalFeature>("experimental", out var feature))
+            {
+                return feature;
+            }
+            if (TryCreate<EdgeFeature>("edge", out feature))
+            {
+                return feature;
+            }
+            if (TryCreate<LegacyFeature>("legacy", out feature))
+            {
+                return feature;
+            }
+            return new NormalFeature();
         }
 
-        #region You can add some helper method to make your code beautiful
+        private static bool TryCreate<T>(string switchName, out IFeature createdFeature) where T : IFeature, new()
+        {
+            createdFeature = default;
+            
+            AppContext.TryGetSwitch(switchName, out var enabled);
+            if (!enabled) return false;
 
-        
-
-        #endregion
+            createdFeature = new T();
+            return true;
+        }
     }
 }
