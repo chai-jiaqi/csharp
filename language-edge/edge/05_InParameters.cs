@@ -29,7 +29,7 @@ namespace edge
                 IntPtr valueAddress = (IntPtr)pointerToValue;
 
                 // Please correct this line to pass the test.
-                bool? areEqual = null;
+                bool? areEqual = false;
                 
                 Assert.Equal(areEqual, argumentAddress == valueAddress);
                 
@@ -51,7 +51,8 @@ namespace edge
                 var valueAddress = (IntPtr) pointerToValue;
                 
                 // Please correct this line to pass the test.
-                bool? areEqual = null;
+                // They have same ref
+                bool? areEqual = true;
                 
                 Assert.Equal(areEqual, valueAddress == argumentAddress);
                 
@@ -68,7 +69,7 @@ namespace edge
             TryModifyReadonlyRef(in value);
 
             // Please change the following line to pass the test.
-            const int expect = default;
+            const int expect = 2;
             
             Assert.Equal(expect, value);
         }
