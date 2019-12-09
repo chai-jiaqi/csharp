@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace FirstElementProvider
 {
@@ -14,10 +15,27 @@ namespace FirstElementProvider
              *
              * Difficulty: Easy
              */
-            
-            throw new NotImplementedException();
-            
+            if (array == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return First(array.GetEnumerator());
+
             #endregion
+        }
+
+        private static object First(IEnumerator enumerator)
+        {
+            enumerator.MoveNext();
+            var enumeratorCurrent = enumerator.Current;
+
+            if (enumeratorCurrent is Array array)
+            {
+                return First(array.GetEnumerator());
+            }
+
+            return enumeratorCurrent;
         }
     }
 }
