@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Xunit;
 
 namespace VariantFacts
@@ -21,8 +22,15 @@ namespace VariantFacts
             // Difficulty: Easy
             //
             // Knowledge Point: co-variance / contra-variance.
-            
-            return subclassArray;
+
+            var length = subclassArray.Length;
+            BaseClass[] baseClassesArray = new BaseClass[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                baseClassesArray[i] = subclassArray[i];
+            }
+            return baseClassesArray;
             
             #endregion
         }
