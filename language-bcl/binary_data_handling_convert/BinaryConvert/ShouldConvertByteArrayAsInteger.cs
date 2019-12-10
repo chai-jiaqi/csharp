@@ -30,12 +30,55 @@ namespace BinaryConvert
         [SuppressMessage("ReSharper", "UnusedParameter.Local")]
         static int ConvertByteToInteger(byte[] buffer, bool bigEndian = false)
         {
-            throw new NotImplementedException();
+            if (buffer == null)
+            {
+                throw new ArgumentNullException();
+            }
+            
+            if (buffer.Length < 4)
+            {
+                throw new ArgumentException();
+            }
+            
+            var ints = new int [buffer.Length];
+            for (var i = 0; i < buffer.Length; i++)
+            {
+                ints[i] = buffer[i];
+            }
+
+            if (bigEndian)
+            {
+                for (var i = 0; i < 3; i++)
+                {
+                    for (var j = 0; j <= i; j++)
+                    {
+                        ints[j] *= 16 * 16;
+                    }
+                }
+            }
+            else
+            {
+                for (var i = 3; i > 0; i--)
+                {
+                    for (var j = 3; j >= i; j--)
+                    {
+                        ints[j] *= 16 * 16;
+                    }
+                }
+            }
+
+            var sum = 0;
+            for (var i = 0; i < 4; i++)
+            {
+                sum += ints[i];
+            }
+
+            return sum;
         }
 
         #endregion
 
-        static IEnumerable<object[]> GetLittleEndianBytes()
+        public static IEnumerable<object[]> GetLittleEndianBytes()
         {
             return new[]
             {
